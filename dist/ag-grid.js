@@ -8291,7 +8291,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return cellComponent;
 	    };
 	    RowRenderer.prototype.onTabKeyDown = function (previousRenderedCell, keyboardEvent) {
-	        var backwards = keyboardEvent.shiftKey;
+	        // var backwards = keyboardEvent.shiftKey;
+	        var backwards = keyboardEvent.shiftKey || keyboardEvent.key === 'ArrowLeft'; // TUF!! simulate Shift+Tab with left arrow keypress
 	        var success = this.moveToCellAfter(previousRenderedCell, backwards);
 	        if (success) {
 	            keyboardEvent.preventDefault();
