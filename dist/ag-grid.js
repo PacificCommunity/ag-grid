@@ -14487,7 +14487,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        switch (key) {
 	            case constants_1.Constants.KEY_ENTER:
 	                this.onTabKeyDown(event); // TUF!! this.onEnterKeyDown(); - make the enter key work like Tab
-	                break; this.addDestroyableEventListener
+	                break;
 	            case constants_1.Constants.KEY_F2:
 	                this.onF2KeyDown();
 	                break;
