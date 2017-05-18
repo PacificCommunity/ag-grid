@@ -16674,7 +16674,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    BaseFilter.prototype.init = function (params) {
 	        this.filterParams = params;
-	        this.defaultFilter = BaseFilter.EQUALS;
+	        this.defaultFilter = BaseFilter.CONTAINS; // TUF!! changed from EQUALS
 	        if (this.filterParams.filterOptions) {
 	            if (this.filterParams.filterOptions.lastIndexOf(BaseFilter.EQUALS) < 0) {
 	                this.defaultFilter = this.filterParams.filterOptions[0];
