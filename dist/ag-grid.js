@@ -8291,8 +8291,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return cellComponent;
 	    };
 	    RowRenderer.prototype.onTabKeyDown = function (previousRenderedCell, keyboardEvent) {
-	        // var backwards = keyboardEvent.shiftKey;
-	        var backwards = keyboardEvent.shiftKey || keyboardEvent.key === 'ArrowLeft'; // TUF!! simulate Shift+Tab with left arrow keypress
+	        var backwards = keyboardEvent.shiftKey;
 	        var success = this.moveToCellAfter(previousRenderedCell, backwards);
 	        if (success) {
 	            keyboardEvent.preventDefault();
@@ -14503,22 +14502,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                this.onBackspaceOrDeleteKeyPressed(key);
 	                break;
 
-	            // TUF!! make left and right arrow keys work like tab, instead of moving the cursor a space within the focused cell
 	            case constants_1.Constants.KEY_DOWN:
 	            case constants_1.Constants.KEY_UP:
-	                this.onNavigationKeyPressed(event, key); 
-	                break;
 	            case constants_1.Constants.KEY_RIGHT:
 	            case constants_1.Constants.KEY_LEFT:
-	                this.onTabKeyDown(event);
+	                this.onNavigationKeyPressed(event, key);
 	                break;
-	            //case constants_1.Constants.KEY_DOWN:
-	            //case constants_1.Constants.KEY_UP:
-	            //case constants_1.Constants.KEY_RIGHT:
-	            //case constants_1.Constants.KEY_LEFT:
-	            //    this.onNavigationKeyPressed(event, key);
-	            //    break;
-                // end TUF!!
 	        }
 	    };
 	    RenderedCell.prototype.createCellEditorParams = function (keyPress, charPress, cellStartedEdit) {
@@ -20085,7 +20074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.addDestroyableEventListener(eInput, 'keydown', function (event) {
 	            var isNavigationKey = event.keyCode === constants_1.Constants.KEY_LEFT || event.keyCode === constants_1.Constants.KEY_RIGHT;
 	            if (isNavigationKey) {
-	                //event.stopPropagation(); TUF!! ensures that left and right arrow keys will move the user between cells rather than within a cell
+	                event.stopPropagation();
 	            }
 	        });
 	    };
